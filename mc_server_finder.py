@@ -3,12 +3,13 @@ import random
 from threading import Thread
 from mcstatus import JavaServer
 from termcolor import colored
+import datetime
 
 ##########   EDITABLE VARIABLES
 wanted_versions = ['1.20.4','Spigot 1.20.4','Paper 1.20.4']    # For categorization colours
 threads = 10000                                                # How many threads are open for searching
 port = 25565                                                   # Server Port. Usually 25565
-trials = 100                                                   # How many IPs are going to be tested by each thread.
+trials = 1000                                                   # How many IPs are going to be tested by each thread.
 
 ##########   Variables
 ip = [0,0,0,0]                                                 # The IPv4 is comprised of 4 numbers from 0 to 255.
@@ -51,10 +52,9 @@ def connect():
       
       # Categorize and Display Minecraft Server
       if tell:
-         ip_separator = " " * (25-len(ip_name))
-         players_separator = " " * (7-len(str(online_players)))
          color = categorize(version, online_players)
-         print(colored("[*]  IP: " + ip_name + ip_separator + "Players Online: "+ str(online_players) + players_separator + "Version: " + str(version) , color))
+         print(colored("[*]   Time: "+ datetime.datetime.now().strftime("%H:%M:%S") +"   ||   IP: " + ip_name + " " * (25-len(ip_name)) + "Players Online: "+ str(online_players) + \
+            " " * (7-len(str(online_players))) + "Version: " + str(version) , color))
 
 
 ##########   Start Program - Information
@@ -63,7 +63,7 @@ print(colored('[*]  Green: Wanted Version and has online players', 'green'))
 print(colored('[*]  Yellow: Wanted Version and has NO online players', 'yellow'))
 print(colored('[*]  Blue: Unwanted Version and has online players', 'blue'))
 print(colored('[*]  Red: Unwanted Version and has NO online players', 'red'),'\n')
-print(colored("Starting search with "+str(threads)+" open threads:\n", 'white', attrs=['bold']))
+print(colored("Starting search with "+str(threads)+" open threads and " + str(trials) + " trials per thread, for a total of " + str(threads*trials) + " IP checks:\n", 'white', attrs=['bold']))
 
 
 ##########   Run Threads
