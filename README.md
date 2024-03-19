@@ -20,4 +20,5 @@ When you open the python file, you can edit the following parameters:
 To run the program, simply run, in the program's directory:
 `python3 mc_server_finder.py`
 
+# Output Example
 ![example](example.png)
