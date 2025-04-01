@@ -6,7 +6,7 @@ from termcolor import colored
 import datetime
 
 ##########   EDITABLE VARIABLES
-wanted_versions = ['1.20.4','Spigot 1.20.4','Paper 1.20.4']    # For categorization colours
+wanted_versions = ['1.21.4','Spigot 1.21.4','Paper 1.21.4']    # For categorization colours
 threads = 10000                                                # How many threads are open for searching
 port = 25565                                                   # Server Port. Usually 25565
 trials = 1000                                                   # How many IPs are going to be tested by each thread.
